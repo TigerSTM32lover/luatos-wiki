@@ -1,0 +1,4 @@
+经过本人此次测试，基于Keil软件的ST-LINK和基于flymcu软件的USB-TTL下载方式均适合使用于替代STM32F103C8T6的合宙AIR32F103系列。
+其中（1）Keil 中ST-LINK和AIR32的引脚连接为3.3V对应3.3V，GND对应GND，SWCLK对应SWCLK，SWDIO对应SWDIO。连接完毕后Keil可以是STM32F103C8编译算法也可以是AIR32F103CB编译算法，魔术棒中的DEBUG选择ST-LINK，Utilities也是ST-LINK，Flashdownload中的算法可以是AIR32也可以是STM32。（简而言之，合宙AIR32F103基本可以不经过修改就下载烧录所有STM32F103C8的程序。
+其次（2）将针对本文进行USB-TTL下载方式补全，USB-TTL和AIR32的引脚连接为5V0对应VBV5，GND对应GND，RXD和TXD连接AIR32的UART0（TXD对应PA10，RXD对应PA9）。连接完毕后flymcu选择好bps，勾选效验和编程到flash时写选项字节，下载方式选择第四个“DTR的低电平复位，RTS高电平进BOOTLOADER”。一切准备完毕后，手指按住AIR32上的BOOT，鼠标电击flymcu中的下载，随之就会显示收到XXXXXXXX数据，最后开始下载程序（同时看到进度条跳动），即可松开按在BOOT上的手指，等待下载完毕。
+（3）具有开发STM32F103C8T6基础的童鞋应该熟悉这两种下载方式，基于上面步骤可以很快上手合宙AIR32。本人是学生，若有不足，敬请各位童鞋大佬进行补充！。
